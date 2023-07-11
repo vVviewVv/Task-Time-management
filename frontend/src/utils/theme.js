@@ -2,12 +2,20 @@ import { createTheme } from "@mui/material";
 
 export const themeApp = createTheme({
   typography: {
-    allVariants: {
-      fontFamily: "inter",
-      textTransform: "none",
-      fontSize: 16,
-    },
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
   },
+
   palette: {
     primary: { main: "#16808c", contrastText: "#F7F7FD" },
     custom: {

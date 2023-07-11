@@ -19,7 +19,15 @@ function MainLayout() {
     },
   ];
   return (
-    <>
+    <Stack
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        overflow: "overlay",
+        fontFamily: "inter, sans-serif",
+        backgroundColor: theme.palette.custom.background,
+      }}
+    >
       <Stack
         direction="row"
         justifyContent="space-between"
@@ -72,7 +80,7 @@ function MainLayout() {
         </Stack>
       </Stack>
       <Outlet />
-    </>
+    </Stack>
   );
 }
 

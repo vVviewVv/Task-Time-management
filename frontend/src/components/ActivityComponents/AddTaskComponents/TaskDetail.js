@@ -20,15 +20,15 @@ function TaskDetail() {
       sx={{
         width: 1,
         minWidth: 100,
+        color: "white",
+        "& .MuiOutlinedInput-notchedOutline": {
+          borderColor: "white",
+        },
+        "& .MuiSvgIcon-root": {
+          color: "white",
+        },
       }}
-      InputProps={
-        {
-          // classes: {
-          //   root: classes.notchedOutline,
-          //   focused: classes.notchedOutline,
-          // },
-        }
-      }
+      InputProps={{ style: { color: theme.palette.custom.white } }}
       InputLabelProps={{
         style: { color: theme.palette.custom.white },
       }}

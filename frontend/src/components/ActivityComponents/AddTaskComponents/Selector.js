@@ -23,7 +23,11 @@ function Selector() {
   };
   return (
     <>
-      <FormControl color="inputColor" sx={{ minWidth: 200 }} size="small">
+      <FormControl
+        color="inputColor"
+        sx={{ minWidth: 200, mb: "7px" }}
+        size="small"
+      >
         <InputLabel
           id="demo-controlled-open-select-label"
           sx={{ color: theme.palette.custom.white }}

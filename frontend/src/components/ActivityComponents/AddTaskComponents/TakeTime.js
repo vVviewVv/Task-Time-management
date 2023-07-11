@@ -6,9 +6,10 @@ function TakeTime() {
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center">
       <TextField
-        id="standard-number"
+        id="outlined-number"
         label="Hours"
         type="number"
+        size="small"
         //   value={hours}
         color="inputColor"
         onChange={(e) => {
@@ -23,21 +24,21 @@ function TakeTime() {
           maxLength: 23,
           minLength: 0,
         }}
-        variant="standard"
         sx={{
-          width: 50,
           input: { color: "white", borderColor: "red" },
-          color: theme.palette.custom.white,
-          "& .MuiTextField-root": {
-            border: "1px solid red",
+          color: "white",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white",
+          },
+          "& .MuiSvgIcon-root": {
+            color: "white",
           },
         }}
-        size="small"
         //   error={isError}
       />
 
       <TextField
-        id="standard-number"
+        id="outlined-number"
         label="Minutes"
         type="number"
         color="inputColor"
@@ -47,13 +48,21 @@ function TakeTime() {
           else if (e.target.value < 0) e.target.value = 0;
           // setMinutes(e.target.value);
         }}
+        InputProps={{ inputProps: { min: 0, max: 59 } }}
         InputLabelProps={{
           shrink: true,
           style: { color: theme.palette.custom.white },
         }}
-        variant="standard"
-        sx={{ width: 50, input: { color: theme.palette.custom.white } }}
-        InputProps={{ inputProps: { min: 0, max: 59 } }}
+        sx={{
+          input: { color: theme.palette.custom.white },
+          color: "white",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white",
+          },
+          "& .MuiSvgIcon-root": {
+            color: "white",
+          },
+        }}
         size="small"
         //   error={isError}
       />
