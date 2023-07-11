@@ -1,16 +1,17 @@
 import React from "react";
 import { Stack, useTheme } from "@mui/material";
+import { Selector, TakeTime, TaskDetail } from "./AddTaskComponents";
 
 function AddTask() {
   const theme = useTheme();
   return (
     <Stack
       direction="row"
-      // spacing={2}
+      justifyContent="space-between"
+      alignItems="center"
       sx={{
         width: "1000px",
         height: "50px",
-        whiteSpace: "nowrap",
         color: theme.palette.custom.white,
         backgroundColor: theme.palette.custom.black,
         alignItems: "center",
@@ -19,8 +20,13 @@ function AddTask() {
         mx: "auto",
       }}
     >
-      <Stack>ฟฟ</Stack>
-      <Stack>ฟฟฟ</Stack>
+      <Stack>
+        <Selector />
+        <TakeTime />
+      </Stack>
+      <Stack sx={{ backgroundColor: theme.palette.custom.red }}>
+        <TaskDetail />
+      </Stack>
     </Stack>
   );
 }

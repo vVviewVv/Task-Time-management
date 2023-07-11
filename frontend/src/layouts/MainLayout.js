@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, useTheme, Box, Typography } from "@mui/material";
+import { Stack, useTheme, Box } from "@mui/material";
 import { useNavigate, Outlet } from "react-router";
 
 function MainLayout() {
