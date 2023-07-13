@@ -68,6 +68,10 @@ function MainLayout() {
             </Box>
           ))}
           <Box
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location = "/login";
+            }}
             sx={{
               height: 25,
               width: 25,

@@ -1,13 +1,12 @@
-const express = require("express");
-const router = express.Router();
-const mongoose = require("mongoose");
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
+
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
+const saltRounds = 10;
 const secret = "view";
 
-router.post("/register", function (req, res, next) {
+exports.register = async (req, res, next) => {
   bcrypt.hash(req.body.Password, saltRounds, function (err, hash) {
     req.body.Password = hash;
     User.create(req.body)
@@ -18,14 +17,14 @@ router.post("/register", function (req, res, next) {
         next(err);
       });
   });
-});
+};
 
-router.post("/login", function (req, res, next) {
+exports.login = async (req, res, next) => {
   User.findOne({ Email: req.body.Email })
     .then((user) => {
       bcrypt.compare(req.body.Password, user.Password, function (err, result) {
         if (result) {
-          var token = jwt.sign({ Email: user.Email }, secret, {
+          var token = jwt.sign({ _id: user._id }, secret, {
             expiresIn: "1h",
           });
           res.json({ user, token });
@@ -35,17 +34,24 @@ router.post("/login", function (req, res, next) {
     .catch((err) => {
       res.status(404).send("Email not found");
     });
-});
+};
 
-router.post("/", function (req, res, next) {
+exports.checkToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, secret);
-    res.json({ decoded });
-    res.status(200).send(decoded);
+    res.status(200).send(decoded._id);
   } catch (err) {
     res.status(498).send(err);
   }
-});
+};
 
-module.exports = router;
+exports.decodedToken = async (req) => {
+  // const token = req.split(" ")[1];
+  // const decoded = jwt.verify(token, secret);
+  // console.log(decoded._id);
+  // return decoded;
+  // const id = decoded._id.then((t) => {
+  //   console.log(t);
+  // });
+};

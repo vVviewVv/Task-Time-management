@@ -5,7 +5,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 const tasks = require("./routes/tasks");
-const auth = require("./service/auth");
+const auth = require("./routes/auth.js");
+const activity = require("./routes/activity.js");
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -41,10 +42,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/tasks", tasks);
 
-//service
+// app.use("/tasks", tasks);
 app.use("/auth", auth);
+app.use("/activity", activity);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -13,6 +13,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import { fecthRegister } from "../fetch/fecthAuth";
+import { useNavigate } from "react-router";
+
 function Copyright(props) {
   return (
     <Typography
@@ -36,12 +39,18 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    const jsonData = {
+      Email: data.get("email"),
+      Password: data.get("password"),
+      Firstname: data.get("firstName"),
+      Lastname: data.get("lastName"),
+    };
+    fecthRegister(jsonData).then((l) => {
+      if (l) navigate("/login");
     });
   };
 
@@ -131,7 +140,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

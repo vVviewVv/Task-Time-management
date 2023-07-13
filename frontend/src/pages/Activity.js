@@ -16,13 +16,13 @@ function Activity() {
     fecthToken();
   }, []);
   const windowSize = UseWindowSize();
-  const { isLoading, error, data } = useQuery("repoData", () => {
-    return fetchActivities();
-  });
+  // const { isLoading, error, data } = useQuery("repoData", () => {
+  //   return fetchActivities();
+  // });
 
-  if (isLoading) return "Loading...";
+  // if (isLoading) return "Loading...";
 
-  if (error) return "An error has occurred: " + error.message;
+  // if (error) return "An error has occurred: " + error.message;
 
   return (
     <>

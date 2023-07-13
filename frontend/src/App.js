@@ -5,6 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Activity from "./pages/Activity";
 import Dashboard from "./pages/Dashboard";
 import MainLayout from "./layouts/MainLayout";
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route index path="/login" element={<Login />} />
         <Route index path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route exact path="/" element={<MainLayout />}>
           <Route element={<Navigate to="/activity" replace />} />
           <Route path=":projectDate" element={<Activity />} />
