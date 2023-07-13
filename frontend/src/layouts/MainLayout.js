@@ -34,7 +34,6 @@ function MainLayout() {
         alignItems="center"
         sx={{
           m: 0,
-          minHeight: 15,
           backgroundColor: theme.palette.custom.black,
           alignContent: "center",
           p: "10px 10px 10px 10px",
@@ -74,7 +73,7 @@ function MainLayout() {
               width: 25,
               borderRadius: "50%",
               display: "flex",
-              backgroundColor: theme.palette.custom.white,
+              backgroundColor: theme.palette.custom.grey,
             }}
           ></Box>
         </Stack>

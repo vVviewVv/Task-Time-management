@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Stack, Typography, Box } from "@mui/material";
+
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+
 import AddTask from "../components/ActivityComponents/AddTask";
 import Card from "../components/ActivityComponents/Card";
 import UseWindowSize from "../hook/useWindowSize";
 
+import { fetchActivities } from "../fetch/fecthActivity";
+import { fecthToken } from "../fetch/fecthAuth";
+
 function Activity() {
+  useEffect(() => {
+    fecthToken();
+  }, []);
   const windowSize = UseWindowSize();
+  const { isLoading, error, data } = useQuery("repoData", () => {
+    return fetchActivities();
+  });
+
+  if (isLoading) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
+
   return (
     <>
       <Stack
@@ -59,11 +77,17 @@ function Activity() {
               {/* {new Date().toDateString() == new Date(value?.date).toDateString()
           ? "Today"
         : dateMonthNameFullYear(value?.date)} */}
-              Total work hours: 8 hr 30 min
+              Total work hours: - hr - min
             </Typography>
           </Stack>
-          <Card />
+          {/* {data.data?.map((tasks) => {
+            return <Card />;
+          })} */}
         </Box>
+        {/* {status == "success" &&
+          data.data?.map((post, index) => {
+            return <li key={index}>{post.EmployeeId}</li>;
+          })} */}
       </Stack>
     </>
   );

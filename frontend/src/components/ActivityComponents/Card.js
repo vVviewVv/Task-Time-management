@@ -11,13 +11,14 @@ function Card() {
         justifyContent="space-between"
         alignItems="center"
         sx={{
-          width: "1000px",
+          width: "80vw",
           height: "30px",
           color: theme.palette.custom.white,
           backgroundColor: theme.palette.custom.white,
           alignItems: "center",
           borderRadius: "5px",
           p: "20px 20px",
+          mb: "5px",
         }}
       >
         <Investment />

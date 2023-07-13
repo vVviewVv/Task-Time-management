@@ -13,9 +13,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route index path="/login" element={<Login />} />
+        <Route index path="/" element={<Login />} />
         <Route exact path="/" element={<MainLayout />}>
-          <Route index element={<Navigate to="/activity" replace />} />
+          <Route element={<Navigate to="/activity" replace />} />
           <Route path=":projectDate" element={<Activity />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>

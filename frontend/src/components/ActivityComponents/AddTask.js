@@ -10,7 +10,7 @@ function AddTask() {
       justifyContent="space-between"
       alignItems="center"
       sx={{
-        width: "1000px",
+        width: "80vw",
         height: "80px",
         color: theme.palette.custom.white,
         backgroundColor: theme.palette.custom.black,

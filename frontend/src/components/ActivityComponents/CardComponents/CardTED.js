@@ -28,26 +28,19 @@ function CardTED() {
         <Stack>
           <EditIcon
             sx={{
-              // color: task?.isSynced
-              //   ? theme.palette.custom.grey
-              //   : theme.palette.custom.edit,
-              height: 1,
               color: theme.palette.custom.edit,
             }}
             //   style={{
             //     cursor: task?.isSynced ? "default" : "pointer",
             //   }}
-            //   onClick={() => {
-            //     if (!task?.isSynced) handleOpenEditModal(task);
-            //   }}
+            onClick={() => {
+              //     if (!task?.isSynced) handleOpenEditModal(task);
+            }}
           />
         </Stack>
         <Stack>
           <DeleteIcon
             sx={{
-              //     color: task?.isSynced
-              //       ? theme.palette.custom.grey
-              //       : theme.palette.custom.delete,
               color: theme.palette.custom.delete,
             }}
             //   style={{
