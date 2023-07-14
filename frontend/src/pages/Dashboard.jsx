@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Stack, useTheme } from "@mui/material";
 import UserDetail from "../components/DashboardComponents/UserDetail";
 import Chart from "../components/DashboardComponents/Chart";
+import { fecthToken } from "../fetch/fecthAuth";
 
 function Dashboard() {
+  useEffect(() => {
+    fecthToken();
+  }, []);
   const theme = useTheme();
   return (
     <Stack

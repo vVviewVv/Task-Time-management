@@ -4,7 +4,7 @@ const activityController = require("../controller/activityController.js");
 
 router.post("/add", activityController.addTask);
 router.get("/getAll", activityController.getTasks);
-router.get("/getTasksByDay", activityController.getTasksByDay);
+router.post("/getTasksByDay", activityController.getTasksByDay);
 router.put("/edit/:id", activityController.editTask);
 router.delete("/:id", activityController.deleteTask);
 

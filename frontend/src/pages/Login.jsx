@@ -22,6 +22,7 @@ function Copyright(props) {
       color="text.secondary"
       align="center"
       {...props}
+      sx={{ color: "white" }}
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
@@ -53,25 +54,39 @@ function Login() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid
+        container
+        component="main"
+        sx={{
+          height: "100vh",
+        }}
+      >
         <CssBaseline />
         <Grid
           item
           xs={false}
           sm={4}
-          md={7}
+          md={8}
           sx={{
-            backgroundImage: "../../public/images/DSC_3576-2.jpg",
+            backgroundImage:
+              "url(https://source.unsplash.com/random?wallpapers)",
             backgroundRepeat: "no-repeat",
-            // backgroundColor: (t) =>
-            //   t.palette.mode === "light"
-            //     ? t.palette.grey[50]
-            //     : t.palette.grey[900],
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={4}
+          component={Paper}
+          elevation={6}
+          square
+          sx={{
+            backgroundColor: "#3A3A3A",
+          }}
+        >
           <Box
             sx={{
               my: 8,
@@ -81,10 +96,18 @@ function Login() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            <Box
+              component="img"
+              alt="Logo"
+              src="/images/cropped-LOGO-gosoft.png"
+              justifyContent="flex-start"
+              sx={{
+                height: 50,
+                display: "flex",
+                mb: "5px",
+              }}
+            ></Box>
+            <Typography component="h5" variant="h6" sx={{ color: "#FFFFFF" }}>
               Sign in
             </Typography>
             <Box
@@ -102,6 +125,18 @@ function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                sx={{
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "white",
+                  },
+                  "& .MuiSvgIcon-root": {
+                    color: "white",
+                  },
+                }}
+                InputProps={{ style: { color: "white" } }}
+                InputLabelProps={{
+                  style: { color: "white" },
+                }}
               />
               <TextField
                 margin="normal"
@@ -112,6 +147,18 @@ function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                sx={{
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "white",
+                  },
+                  "& .MuiSvgIcon-root": {
+                    color: "white",
+                  },
+                }}
+                InputProps={{ style: { color: "white" } }}
+                InputLabelProps={{
+                  style: { color: "white" },
+                }}
               />
               {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -121,18 +168,27 @@ function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: "#F7F7FD",
+                  color: "#000000",
+                }}
               >
                 Sign In
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link href="/register" variant="body2">
+                  <Link
+                    href="/register"
+                    variant="body2"
+                    sx={{ color: "#F7F7FD" }}
+                  >
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              {/* <Copyright sx={{ mt: 5 }} /> */}
             </Box>
           </Box>
         </Grid>

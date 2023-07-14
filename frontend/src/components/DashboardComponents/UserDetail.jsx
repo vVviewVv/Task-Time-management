@@ -1,10 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { fetchUserDetail } from "../../fetch/fetchUser";
 
 function UserDetail() {
   const theme = useTheme();
-  const data = fetchUserDetail();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetchUserDetail().then((e) => {
+      setData(e);
+    });
+  }, []);
+
   return (
     <>
       <Box
@@ -21,18 +28,18 @@ function UserDetail() {
           fontWeight: 500,
         }}
       >
-        {data.FirstName} LastName
+        {data?.Firstname} {data?.Lastname}
       </Typography>
-      <Typography>JobTitle</Typography>
+      <Typography>{data?.JobTitle}</Typography>
       <Stack sx={{ width: 0.9, mb: "5px" }}>
-        {/* <Typography
+        <Typography
           sx={{
             fontWeight: 500,
           }}
         >
           Email
         </Typography>
-        <Typography>{data.Email}</Typography>
+        <Typography>{data?.Email}</Typography>
       </Stack>
       <Stack sx={{ width: 0.9, mb: "5px" }}>
         <Typography
@@ -42,7 +49,7 @@ function UserDetail() {
         >
           EmployeeID
         </Typography>
-        <Typography>{data._id}</Typography>
+        <Typography>{data?._id}</Typography>
       </Stack>
       <Stack sx={{ width: 0.9, mb: "5px" }}>
         <Typography
@@ -52,7 +59,7 @@ function UserDetail() {
         >
           Department Name
         </Typography>
-        <Typography>{data.DepartmentName}</Typography>
+        <Typography>{data?.DepartmentName}</Typography>
       </Stack>
       <Stack sx={{ width: 0.9, mb: "5px" }}>
         <Typography
@@ -62,7 +69,7 @@ function UserDetail() {
         >
           Company
         </Typography>
-        <Typography>{data.Company}</Typography> */}
+        <Typography>{data?.Company}</Typography>
       </Stack>
     </>
   );

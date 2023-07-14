@@ -7,8 +7,8 @@ import AddTask from "../components/ActivityComponents/AddTask";
 import Card from "../components/ActivityComponents/Card";
 import UseWindowSize from "../hook/useWindowSize";
 import { EditModal, DeleteModal } from "../components/ActivityComponents";
-import { useMutation, useQueryClient } from "react-query";
-import { fetchActivities, fetchAddTask } from "../fetch/fecthActivity";
+import { useMutation, useQueryClient, useQueries } from "react-query";
+import { fetchActivities, fetchActivitiesByDay } from "../fetch/fecthActivity";
 import { fecthToken } from "../fetch/fecthAuth";
 
 function Activity() {
@@ -17,27 +17,33 @@ function Activity() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [taskSelected, setTaskSelected] = useState([]);
   const windowSize = UseWindowSize();
-
   useEffect(() => {
     fecthToken();
   }, []);
 
-  const queryClient = new useQueryClient();
+  // const days = new Date().getMonth();
+  // const date = new Date(new Date() - 86400000).setHours(0, 0, 0, 0);
+  // // .toISOString()
+  const date = [
+    new Date("2023-07-14").toISOString(),
+    new Date("2023-07-13").toISOString(),
+    new Date("2023-07-12").toISOString(),
+    new Date("2023-07-11").toISOString(),
+    new Date("2023-07-10").toISOString(),
+  ];
+  const numbers = [0, 1, 2, 3, 4];
+
   // const activitiesQueries = useQueries(
-  //   days?.map((d) => {
+  //   date?.map((d) => {
   //     return {
-  //       queryKey: ["activities", new Date(d.date).toDateString()],
-  //       queryFn: () => fetchActivities(d.date),
+  //       queryKey: ["activities", new Date("2023-07-14").toISOString()],
+  //       queryFn: () => fetchActivitiesByDay(d),
   //     };
-  //   }),
-  //   {
-  //     enabled: !totalWorkHoursLoading,
-  //   }
+  //   })
   // );
   const postsQuery = useQuery({
     queryKey: ["timetask"],
     queryFn: () => fetchActivities(),
-
     fetchPolicy: "cache-and-network",
   });
   useEffect(() => {}, [postsQuery]);
@@ -63,7 +69,6 @@ function Activity() {
   };
   return (
     <>
-      {/* <Button onClick={() => mutate(Task)}>tast</Button> */}
       <EditModal
         openEditModal={openEditModal}
         handleCloseEditModal={handleCloseEditModal}
@@ -83,6 +88,8 @@ function Activity() {
         }}
       >
         <AddTask />
+        {/* {numbers.map((index) => */}
+        {/* activitiesQueries[index].data?.map((task) => ( */}
         <Box
           sx={{
             width: "1",
@@ -110,7 +117,12 @@ function Activity() {
               {/* {new Date().toDateString() == new Date(value?.date).toDateString()
           ? "Today"
         : dateMonthNameFullYear(value?.date)} */}
-              Today
+              {/* Today */}
+              {/* {new Date(date[index]).getDate() +
+                "/" +
+                new Date(date[index]).getMonth() +
+                "/" +
+                new Date(date[index]).getFullYear()} */}
             </Typography>
             <Typography
               sx={{
@@ -128,6 +140,11 @@ function Activity() {
               Total work hours: - hr - min
             </Typography>
           </Stack>
+          {/* <Card
+                task={task}
+                handleOpenEditModal={handleOpenEditModal}
+                handleOpenDeleteModal={handleOpenDeleteModal}
+              /> */}
           {postsQuery.data?.map((task) => {
             return (
               <Card
@@ -138,6 +155,8 @@ function Activity() {
             );
           })}
         </Box>
+        {/* )) */}
+        {/* )} */}
       </Stack>
     </>
   );

@@ -20,12 +20,12 @@ export async function fetchActivitiesByDay(data) {
     const response = await fetch(
       "http://localhost:5000/activity/getTasksByDay",
       {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: "Bearer " + token,
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ DateOfTask: data }),
       }
     );
     const result = await response.json();
@@ -44,6 +44,7 @@ export async function fetchAddTask(data) {
         Authorization: "Bearer " + token,
       },
       body: JSON.stringify(data),
+      // body: JSON.stringify({ DateOfTask: data }),
     });
   } catch (error) {
     console.error("Error:", error);
