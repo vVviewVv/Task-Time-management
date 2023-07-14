@@ -47,7 +47,6 @@ export async function fecthLogin(data) {
     const result = await response.json();
     localStorage.setItem("token", result.token);
     // console.log("Success:", result);
-    console.log(result.token);
     return response.status == 200 && result.token != null;
   } catch (error) {
     console.error("Error:", error);

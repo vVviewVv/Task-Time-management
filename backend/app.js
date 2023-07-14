@@ -4,9 +4,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
-const tasks = require("./routes/tasks");
 const auth = require("./routes/auth.js");
 const activity = require("./routes/activity.js");
+const user = require("./routes/user.js");
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -27,6 +27,10 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  );
   next();
 });
 
@@ -44,6 +48,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 // app.use("/tasks", tasks);
+app.use("/user", user);
 app.use("/auth", auth);
 app.use("/activity", activity);
 

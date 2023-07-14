@@ -29,18 +29,19 @@ export const themeApp = createTheme({
       grey: "#AAAAAA",
       edit: "#FFC061",
       duplicate: "#5185EC",
-      delete: "red",
+      delete: "#E21818",
+      yes: "#35A700",
       black: "#3A3A3A",
     },
-    // confirmBtn: {
-    //   main: "#16808c",
-    //   hover: "#36808c",
-    //   contrastText: "#F7F7FD",
-    // },
+    confirmBtn: {
+      main: "#16808c",
+      hover: "#E21818",
+      contrastText: "#F7F7FD",
+    },
     addBtn: {
       main: "#E75050",
       contrastText: "#F7F7FD",
-      hover: "red",
+      hover: "#E21818",
     },
     inputColor: {
       main: "#F7F7FD",

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, useTheme, Stack } from "@mui/material";
 
-function TakeTime() {
+function TakeTime({ hours, setHours, minutes, setMinutes }) {
   const theme = useTheme();
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center">
@@ -10,12 +10,12 @@ function TakeTime() {
         label="Hours"
         type="number"
         size="small"
-        //   value={hours}
+        value={hours}
         color="inputColor"
         onChange={(e) => {
           if (e.target.value > 23) e.target.value = 23;
           else if (e.target.value < 0) e.target.value = 0;
-          // setHours(e.target.value);
+          setHours(e.target.value);
         }}
         InputProps={{ inputProps: { min: 0, max: 23 } }}
         InputLabelProps={{
@@ -34,7 +34,6 @@ function TakeTime() {
             color: "white",
           },
         }}
-        //   error={isError}
       />
 
       <TextField
@@ -42,11 +41,11 @@ function TakeTime() {
         label="Minutes"
         type="number"
         color="inputColor"
-        //   value={minutes}
+        value={minutes}
         onChange={(e) => {
           if (e.target.value > 59) e.target.value = 59;
           else if (e.target.value < 0) e.target.value = 0;
-          // setMinutes(e.target.value);
+          setMinutes(e.target.value);
         }}
         InputProps={{ inputProps: { min: 0, max: 59 } }}
         InputLabelProps={{
@@ -64,7 +63,6 @@ function TakeTime() {
           },
         }}
         size="small"
-        //   error={isError}
       />
     </Stack>
   );

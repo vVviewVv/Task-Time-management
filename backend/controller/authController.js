@@ -40,18 +40,19 @@ exports.checkToken = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
     const decoded = jwt.verify(token, secret);
-    res.status(200).send(decoded._id);
+    res.status(200).send(decoded);
   } catch (err) {
     res.status(498).send(err);
   }
 };
 
-exports.decodedToken = async (req) => {
-  // const token = req.split(" ")[1];
-  // const decoded = jwt.verify(token, secret);
-  // console.log(decoded._id);
-  // return decoded;
-  // const id = decoded._id.then((t) => {
-  //   console.log(t);
-  // });
+exports.decodedToken = async (req, res) => {
+  const token = req.split(" ")[1];
+  const decoded = jwt.verify(token, secret, (err, verifiedJwt) => {
+    if (err) {
+    } else {
+      return verifiedJwt._id;
+    }
+  });
+  return decoded;
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   Select,
@@ -6,10 +6,10 @@ import {
   useTheme,
   MenuItem,
 } from "@mui/material";
-function Selector() {
+function Selector({ inv, setInv }) {
   const theme = useTheme();
-  const [inv, setInv] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+
+  const [open, setOpen] = useState(false);
   const handleChange = (event) => {
     setInv(event.target.value);
   };
@@ -53,12 +53,10 @@ function Selector() {
             },
           }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>admin1</MenuItem>
-          <MenuItem value={20}>admin2</MenuItem>
-          <MenuItem value={30}>admin3</MenuItem>
+          <MenuItem value={"Business Trip"}>Business Trip</MenuItem>
+          <MenuItem value={"Idle Time"}>Idle Time</MenuItem>
+          <MenuItem value={"Learning"}>Learning</MenuItem>
+          <MenuItem value={"Innovation"}>Innovation</MenuItem>
         </Select>
       </FormControl>
     </>

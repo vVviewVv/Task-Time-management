@@ -1,8 +1,79 @@
-import { axiosHelper } from "../utils/axiosHelper";
-import axios from "axios";
-
 export async function fetchActivities() {
-  return await axios.get("http://localhost:5000/tasks");
+  try {
+    const token = localStorage.getItem("token");
+    const response = await fetch("http://localhost:5000/activity/getAll", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+export async function fetchActivitiesByDay(data) {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      "http://localhost:5000/activity/getTasksByDay",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+export async function fetchAddTask(data) {
+  try {
+    const token = localStorage.getItem("token");
+    const response = await fetch("http://localhost:5000/activity/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(data),
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+export async function fetchUpdateActivity(data) {
+  try {
+    const response = await fetch(
+      "http://localhost:5000/activity/edit/" + data._id,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+export async function fetchDeleteActivity(data) {
+  try {
+    const response = await fetch("http://localhost:5000/activity/" + data, {
+      method: "DELETE",
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
 
 // export async function fetchTotalHours(projectId, startDate, endDate) {

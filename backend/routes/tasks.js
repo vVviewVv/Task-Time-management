@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Task = require("../models/Task");
 
+//for testing
 router.get("/", (req, res, next) => {
   Task.find()
     .then((task) => {
@@ -34,7 +35,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.put("/:id", (req, res, next) => {
-  Task.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Task.findByIdAndUpdate(req.params.id, req.body)
     .then((task) => {
       res.json(task);
     })

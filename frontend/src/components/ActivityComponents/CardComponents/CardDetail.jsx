@@ -1,21 +1,20 @@
 import React from "react";
 import { Typography } from "@mui/material";
 
-function Investment() {
+function CardDetail({ detail }) {
   return (
     <>
       <Typography
         sx={{
-          flex: 0.2,
+          flex: 0.6,
           width: 1,
           p: "10px",
           color: "black",
         }}
       >
-        Investment
+        {detail}
       </Typography>
     </>
   );
 }
-
-export default Investment;
+export default CardDetail;
